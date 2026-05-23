@@ -1,0 +1,144 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: #1a1a2e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Georgia, serif;
+}
+
+.game-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+.title {
+  color: #e94560;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px rgba(233, 69, 96, 0.5);
+}
+
+.stats {
+  display: flex;
+  gap: 32px;
+  color: #ccd6f6;
+  font-size: 1.1rem;
+}
+
+.field {
+  display: grid;
+  grid-template-columns: repeat(4, 110px);
+  grid-template-rows: repeat(4, 110px);
+  gap: 8px;
+  background: #16213e;
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: 0 0 40px rgba(233, 69, 96, 0.2);
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Crect x='12' y='0' width='10' height='12' rx='2' fill='%23b5651d' stroke='%23333' stroke-width='1'/%3E%3Crect x='14' y='12' width='6' height='18' rx='2' fill='%238B4513' stroke='%23333' stroke-width='1'/%3E%3C/svg%3E") 16 0, crosshair;
+}
+
+.cell {
+  background: #0f3460;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #1a4a8a;
+  transition: background 0.2s, border-color 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.cell.active {
+  background: #1a4a8a;
+  border-color: #e94560;
+  box-shadow: 0 0 15px rgba(233, 69, 96, 0.4);
+}
+
+.goblin {
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
+  animation: pop 0.2s ease-out;
+  pointer-events: none;
+}
+
+@keyframes pop {
+  0% { transform: scale(0) rotate(-10deg); }
+  70% { transform: scale(1.15) rotate(5deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* Overlay */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 30, 0.92);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.overlay-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 32px;
+  text-align: center;
+}
+
+.overlay-title {
+  color: #e94560;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 0 0 15px rgba(233, 69, 96, 0.5);
+}
+
+.overlay-text {
+  color: #ccd6f6;
+  font-size: 1rem;
+}
+
+.overlay-result {
+  color: #ffd700;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.btn {
+  background: #e94560;
+  color: white;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: Georgia, serif;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn:hover {
+  background: #c73652;
+  transform: scale(1.05);
+}
+
+.hidden {
+  display: none !important;
+}
